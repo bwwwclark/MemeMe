@@ -19,6 +19,7 @@ import UIKit
         @IBOutlet weak var toolBar: UIToolbar!
         @IBOutlet weak var cameraButton: UIBarButtonItem!
         
+        @IBOutlet weak var beginLabel: UILabel!
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -49,7 +50,7 @@ import UIKit
         
             bottomText.delegate = self
             
-            
+        
 
         }
         
@@ -159,6 +160,8 @@ import UIKit
                 imageView.image = image
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            beginLabel.text = ""
+            
         }
         
         

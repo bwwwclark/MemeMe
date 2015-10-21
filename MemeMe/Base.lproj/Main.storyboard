@@ -25,6 +25,13 @@
                                     <constraint firstAttribute="height" constant="300" id="JTn-mV-2Lb"/>
                                 </constraints>
                             </imageView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odI-tq-i9W">
+                                <rect key="frame" x="257" y="28" width="264" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sL-2q-xe6">
                                 <rect key="frame" x="0.0" y="556" width="600" height="44"/>
                                 <constraints>
@@ -56,13 +63,12 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odI-tq-i9W">
-                                <rect key="frame" x="257" y="28" width="264" height="30"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Take a picture or select a photo to begin" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AVT-fO-WDt">
+                                <rect key="frame" x="29" y="121" width="309" height="100"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -74,10 +80,12 @@
                             <constraint firstItem="Kc2-GC-5xY" firstAttribute="width" secondItem="odI-tq-i9W" secondAttribute="width" id="Olx-bN-lKj"/>
                             <constraint firstItem="5sL-2q-xe6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="VUc-AT-yvV"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5sL-2q-xe6" secondAttribute="trailing" constant="-16" id="XUb-pP-vYi"/>
+                            <constraint firstAttribute="centerX" secondItem="AVT-fO-WDt" secondAttribute="centerX" id="YaC-f2-vAJ"/>
                             <constraint firstItem="Kc2-GC-5xY" firstAttribute="height" secondItem="odI-tq-i9W" secondAttribute="height" id="uoE-cK-Xye"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="beginLabel" destination="AVT-fO-WDt" id="XnF-bW-z3L"/>
                         <outlet property="bottomText" destination="Kc2-GC-5xY" id="26S-bp-kmD"/>
                         <outlet property="cameraButton" destination="r5t-58-rod" id="EMH-II-knC"/>
                         <outlet property="imageView" destination="CZW-gb-icn" id="by2-k9-7aG"/>
