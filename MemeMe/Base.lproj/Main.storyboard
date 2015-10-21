@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CZW-gb-icn">
+                                <rect key="frame" x="35" y="20" width="531" height="367"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="500" id="JJN-Qt-LhI"/>
+                                    <constraint firstAttribute="height" constant="300" id="JTn-mV-2Lb"/>
+                                </constraints>
+                            </imageView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5sL-2q-xe6">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="hsf-oH-JrB"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem title="Photos" id="jHi-5U-W5T">
+                                        <connections>
+                                            <action selector="pickButton:" destination="vXZ-lx-hvc" id="G1O-Or-S4r"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem systemItem="camera" id="r5t-58-rod">
+                                        <connections>
+                                            <action selector="cameraButton:" destination="vXZ-lx-hvc" id="KLD-Q2-y1c"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="scF-nj-NLG"/>
+                                    <barButtonItem systemItem="action" id="UYW-7U-Cri">
+                                        <connections>
+                                            <action selector="shareMeme:" destination="vXZ-lx-hvc" id="zTd-xh-r6Q"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Bottom" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Kc2-GC-5xY">
+                                <rect key="frame" x="221" y="280" width="264" height="39"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="Top" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="odI-tq-i9W">
+                                <rect key="frame" x="257" y="28" width="264" height="30"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5sL-2q-xe6" secondAttribute="bottom" id="3gB-vd-hYd"/>
+                            <constraint firstAttribute="centerX" secondItem="odI-tq-i9W" secondAttribute="centerX" constant="-90" id="6oi-Ye-fLu"/>
+                            <constraint firstAttribute="centerX" secondItem="CZW-gb-icn" secondAttribute="centerX" constant="-0.5" id="71C-Jz-Mrc"/>
+                            <constraint firstAttribute="centerX" secondItem="5sL-2q-xe6" secondAttribute="centerX" id="9to-jg-Y7y"/>
+                            <constraint firstAttribute="centerX" secondItem="Kc2-GC-5xY" secondAttribute="centerX" constant="-53" id="Gxf-Rk-HBf"/>
+                            <constraint firstItem="Kc2-GC-5xY" firstAttribute="width" secondItem="odI-tq-i9W" secondAttribute="width" id="Olx-bN-lKj"/>
+                            <constraint firstItem="5sL-2q-xe6" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="VUc-AT-yvV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5sL-2q-xe6" secondAttribute="trailing" constant="-16" id="XUb-pP-vYi"/>
+                            <constraint firstItem="Kc2-GC-5xY" firstAttribute="height" secondItem="odI-tq-i9W" secondAttribute="height" id="uoE-cK-Xye"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bottomText" destination="Kc2-GC-5xY" id="26S-bp-kmD"/>
+                        <outlet property="cameraButton" destination="r5t-58-rod" id="EMH-II-knC"/>
+                        <outlet property="imageView" destination="CZW-gb-icn" id="by2-k9-7aG"/>
+                        <outlet property="toolBar" destination="5sL-2q-xe6" id="cHq-e0-Iba"/>
+                        <outlet property="topText" destination="odI-tq-i9W" id="JrE-w4-zXc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
