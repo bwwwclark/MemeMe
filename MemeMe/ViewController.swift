@@ -7,8 +7,6 @@
 //
 
 import UIKit
-
-    
     
     class ViewController: UIViewController,UINavigationControllerDelegate, UIImagePickerControllerDelegate,UITextFieldDelegate{
         
@@ -22,35 +20,39 @@ import UIKit
         @IBOutlet weak var beginLabel: UILabel!
 
         @IBOutlet weak var shareButton: UIBarButtonItem!
-        let memeTextAttributes = [
-            NSStrokeColorAttributeName : UIColor.blackColor(),
-            NSForegroundColorAttributeName : UIColor.whiteColor(),
-            NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
-            NSStrokeWidthAttributeName : -4.0
-        ]
         
         
         override func viewDidLoad() {
             super.viewDidLoad()
         
             // set default text
-            topText.text = "TOP"
-            bottomText.text = "BOTTOM"
             
-            //  set default attributes and alignment
-            topText.defaultTextAttributes = memeTextAttributes
-            bottomText.defaultTextAttributes = memeTextAttributes
-            topText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-            bottomText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-        
-        
-            topText.delegate = self
-            bottomText.delegate = self
+            prepTextField(bottomText,defaultText: "BOTTOM")
+            prepTextField(topText,defaultText: "TOP")
+            
             
             //hide the share button
             shareButton.enabled = false
         
 
+        }
+        
+        func prepTextField(textField: UITextField, defaultText: String) {
+            
+            //set all text field attributes for the app
+            
+            let memeTextAttributes = [
+                NSStrokeColorAttributeName : UIColor.blackColor(),
+                NSForegroundColorAttributeName : UIColor.whiteColor(),
+                NSFontAttributeName : UIFont(name: "Impact", size: 40)!,
+                NSStrokeWidthAttributeName : -4.0
+            ]
+
+            textField.delegate = self
+            textField.defaultTextAttributes = memeTextAttributes
+            textField.text = defaultText
+            textField.autocapitalizationType = .AllCharacters
+            textField.textAlignment = .Center
         }
         
         override func viewWillAppear(animated: Bool) {
@@ -109,14 +111,14 @@ import UIKit
             //shift keyboard up for bottom text 
             
             if bottomText.isFirstResponder() {
-                view.frame.origin.y -= getKeyboardHeight(notification)
+                view.frame.origin.y = -getKeyboardHeight(notification)
             }
         }
         func keyboardWillHide(notification: NSNotification) {
             //shift keyboard down after finishing writing bottom text
             
             if bottomText.resignFirstResponder(){
-            view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y = 0
             }
         }
         func getKeyboardHeight(notification: NSNotification) -> CGFloat {
