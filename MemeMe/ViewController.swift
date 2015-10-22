@@ -20,6 +20,8 @@ import UIKit
         @IBOutlet weak var cameraButton: UIBarButtonItem!
         
         @IBOutlet weak var beginLabel: UILabel!
+
+        @IBOutlet weak var shareButton: UIBarButtonItem!
         let memeTextAttributes = [
             NSStrokeColorAttributeName : UIColor.blackColor(),
             NSForegroundColorAttributeName : UIColor.whiteColor(),
@@ -36,7 +38,7 @@ import UIKit
             topText.text = "TOP"
             bottomText.text = "BOTTOM"
             
-            // set default attributes and alignment
+        // set default attributes and alignment
         
             topText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
             
@@ -50,6 +52,8 @@ import UIKit
         
             bottomText.delegate = self
             
+        //hide the share button
+        shareButton.enabled = false
         
 
         }
@@ -155,19 +159,25 @@ import UIKit
             }
         
         
+        //choose the picture to meme and share
         func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imageView.image = image
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
+            
+            //make begin label go away
             beginLabel.text = ""
+            
+            //enable the share button
+            shareButton.enabled = true
             
         }
         
         
         
         @IBAction func cameraButton(sender: AnyObject) {
-            //get photo from camera
+            //take a picture to use in the meme
     
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
@@ -185,7 +195,7 @@ import UIKit
             
         }
         func memeImage() -> UIImage {
-             // sets meme as an image
+             // sets created meme as an image for sharing
             toolBar.hidden = true
         
             UIGraphicsBeginImageContext(self.view.frame.size)
@@ -220,19 +230,26 @@ import UIKit
         
         @IBAction func shareMeme(sender: AnyObject) {
             
-            //launch acitivity view controller to shar meme
             
-            let image =  UIImage()
+            
             topText.resignFirstResponder()
             bottomText.resignFirstResponder()
+            
+            //get the meme image to share
             let newMemedImage = memeImage()
             
+            //set all meme attributes to save
             let newmeme = Meme(topTextField: topText.text, bottomTextField: bottomText.text, image: imageView.image, MemedImage: newMemedImage)
+            
+            //launch acitivity view controller to share meme
             
             let avc = UIActivityViewController(activityItems: [newMemedImage], applicationActivities: nil)
             self.presentViewController(avc, animated: true, completion: nil)
             avc.completionWithItemsHandler = { activity, success, items, error in
                 if success {
+                    
+            //save meme when shared successfully
+                    
                     self.save(newmeme)
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
