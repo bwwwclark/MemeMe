@@ -155,7 +155,7 @@ import UIKit
             }
         
         
-        func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imageView.image = image
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -201,7 +201,7 @@ import UIKit
             
         }
         
-        func save(memedImage: UIImage) {
+        func save(_: Meme) {
             
             //saves the meme
             
@@ -213,9 +213,7 @@ import UIKit
                 
             )
             
-            let object = UIApplication.sharedApplication().delegate
-            let appDelegate = object as! AppDelegate
-           //  appDelegate.memes.append(meme)
+
             
         }
         
@@ -227,12 +225,15 @@ import UIKit
             let image =  UIImage()
             topText.resignFirstResponder()
             bottomText.resignFirstResponder()
-            let newmemedImage = memeImage()
-            let avc = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+            let newMemedImage = memeImage()
+            
+            let newmeme = Meme(topTextField: topText.text, bottomTextField: bottomText.text, image: imageView.image, MemedImage: newMemedImage)
+            
+            let avc = UIActivityViewController(activityItems: [newMemedImage], applicationActivities: nil)
             self.presentViewController(avc, animated: true, completion: nil)
             avc.completionWithItemsHandler = { activity, success, items, error in
                 if success {
-                    self.save(newmemedImage)
+                    self.save(newmeme)
                     self.dismissViewControllerAnimated(true, completion: nil)
                 }
                 
