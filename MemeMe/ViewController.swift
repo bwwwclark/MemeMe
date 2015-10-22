@@ -30,30 +30,25 @@ import UIKit
         ]
         
         
-    override func viewDidLoad() {
+        override func viewDidLoad() {
             super.viewDidLoad()
-            
         
-        // set default text
+            // set default text
             topText.text = "TOP"
             bottomText.text = "BOTTOM"
             
-        // set default attributes and alignment
-        
-            topText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-            
-            bottomText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
-            
+            //  set default attributes and alignment
             topText.defaultTextAttributes = memeTextAttributes
-            
             bottomText.defaultTextAttributes = memeTextAttributes
+            topText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+            bottomText.contentHorizontalAlignment = UIControlContentHorizontalAlignment.Center
+        
         
             topText.delegate = self
-        
             bottomText.delegate = self
             
-        //hide the share button
-        shareButton.enabled = false
+            //hide the share button
+            shareButton.enabled = false
         
 
         }
@@ -222,7 +217,6 @@ import UIKit
                 MemedImage: memeImage()
                 
             )
-            
 
             
         }
@@ -242,16 +236,14 @@ import UIKit
             let newmeme = Meme(topTextField: topText.text, bottomTextField: bottomText.text, image: imageView.image, MemedImage: newMemedImage)
             
             //launch acitivity view controller to share meme
-            
             let avc = UIActivityViewController(activityItems: [newMemedImage], applicationActivities: nil)
             presentViewController(avc, animated: true, completion: nil)
             avc.completionWithItemsHandler = { activity, success, items, error in
                 if success {
                     
             //save meme when shared successfully
-                    
-                    self.save(newmeme)
-                    self.dismissViewControllerAnimated(true, completion: nil)
+            self.save(newmeme)
+            self.dismissViewControllerAnimated(true, completion: nil)
                 }
                 
                 
