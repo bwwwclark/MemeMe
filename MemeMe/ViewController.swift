@@ -68,7 +68,7 @@ import UIKit
             
             //subscribe to keyboard notifications
             
-            self.subscribeToKeyboardNotifications()
+            subscribeToKeyboardNotifications()
             
         }
         
@@ -77,7 +77,7 @@ import UIKit
             
             //unsubscribe to keyboard notifications
             
-            self.unsubscribeFromKeyboardNotifications()
+            unsubscribeFromKeyboardNotifications()
             
         }
         
@@ -121,7 +121,7 @@ import UIKit
             //shift keyboard down after finishing writing bottom text
             
             if bottomText.resignFirstResponder(){
-            self.view.frame.origin.y += getKeyboardHeight(notification)
+            view.frame.origin.y += getKeyboardHeight(notification)
             }
         }
         func getKeyboardHeight(notification: NSNotification) -> CGFloat {
@@ -163,7 +163,7 @@ import UIKit
         func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
             if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
                 imageView.image = image
-                self.dismissViewControllerAnimated(true, completion: nil)
+                dismissViewControllerAnimated(true, completion: nil)
             }
             
             //make begin label go away
@@ -182,7 +182,7 @@ import UIKit
             let pickerController = UIImagePickerController()
             pickerController.delegate = self
             pickerController.sourceType = UIImagePickerControllerSourceType.Camera
-            self.presentViewController(pickerController, animated: true, completion: nil)
+            presentViewController(pickerController, animated: true, completion: nil)
         }
         
         
@@ -198,8 +198,8 @@ import UIKit
              // sets created meme as an image for sharing
             toolBar.hidden = true
         
-            UIGraphicsBeginImageContext(self.view.frame.size)
-            self.view.drawViewHierarchyInRect(self.view.frame,
+            UIGraphicsBeginImageContext(view.frame.size)
+            view.drawViewHierarchyInRect(view.frame,
                 afterScreenUpdates: true)
             let memedImage : UIImage =
             UIGraphicsGetImageFromCurrentImageContext()
@@ -244,7 +244,7 @@ import UIKit
             //launch acitivity view controller to share meme
             
             let avc = UIActivityViewController(activityItems: [newMemedImage], applicationActivities: nil)
-            self.presentViewController(avc, animated: true, completion: nil)
+            presentViewController(avc, animated: true, completion: nil)
             avc.completionWithItemsHandler = { activity, success, items, error in
                 if success {
                     
